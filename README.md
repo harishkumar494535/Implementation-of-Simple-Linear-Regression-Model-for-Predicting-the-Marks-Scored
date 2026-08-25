@@ -14,51 +14,38 @@ To write a program to predict the marks scored by a student using the simple lin
 4 Compute the y -intercept of the line by using the formula:
    
 ## Program:
-```import numpy as np
+```
+import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
 
-X = np.array([1, 2, 3, 4, 5])
-Y = np.array([2, 4, 5, 4, 5])
+X = np.array([1, 2, 3, 4, 5]).reshape(-1, 1)
+Y = np.array([35, 50, 65, 70, 85])
 
-x_mean = np.mean(X)
-y_mean = np.mean(Y)
+model = LinearRegression()
+model.fit(X, Y)
+x_input = float(input("Enter hours studied: "))
+predicted_marks = model.predict([[x_input]])
+print("Predicted Marks:", predicted_marks[0])
 
-
-numerator = np.sum((X - x_mean) * (Y - y_mean))
-denominator = np.sum((X - x_mean) ** 2)
-
-m = numerator/denominator
-b = y_mean - m * x_mean
-
-print("Slope (m):", m)
-print("Intercept (b):", b)
-
-Y_pred = m * X + b
-print("Value:", Y_pred)
-
-x = input("Enter value: ")
-yy = m * float(x) + b
-print("Value:", yy)
-
-
-plt.scatter(X, Y, label="Data Points")
-plt.plot(X, Y_pred, label="Best Fit Line")
-plt.xlabel("X")
-plt.ylabel("Y")
+Y_pred = model.predict(X)
+plt.scatter(X, Y, label="Actual Data")
+plt.plot(X, Y_pred, label="Regression Line")
+plt.xlabel("Hours Studied")
+plt.ylabel("Marks Scored")
+plt.title("Simple Linear Regression (Using sklearn)")
 plt.legend()
-plt.title("Univariate Linear Regression")
-plt.show()'''
+plt.show()
+'''
 /*
 Program to implement the simple linear regression model for predicting the marks scored.
-Developed by: harishkumar.G
-RegisterNumber: 212225080017 
+Developed by: harish Kumar. G
+Register Number: 212225080017 
 */
 ```
 
 ## Output:
-<img width="965" height="825" alt="image" src="https://github.com/user-attachments/assets/452d0bbc-8296-450a-acd0-c5b0db7f1fc6" />
-
-
+<img width="990" height="745" alt="Screenshot 2026-08-25 184112" src="https://github.com/user-attachments/assets/2d0a25f1-a34a-4aed-b986-1604088d93e9" />
 
 ## Result:
 Thus the program to implement the simple linear regression model for predicting the marks scored is written and verified using python programming.
